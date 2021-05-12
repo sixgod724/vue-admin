@@ -1,6 +1,17 @@
 # Vue-admin
 
-> 
+>vue后台模版功能记录
+
+## Tech stack
+
+- Vue
+- Vue-Router
+- @Vue/cli
+- ES6
+- Element-UI
+- ECharts 
+- Sass
+- npm
 
 ## Build Setup
 
