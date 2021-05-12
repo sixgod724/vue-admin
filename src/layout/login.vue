@@ -43,8 +43,6 @@ export default {
       }
     };
   },
-  mounted() {
-  },
   methods: {
     onSubmit(formName) {
       this.$refs[formName].validate(valid => {

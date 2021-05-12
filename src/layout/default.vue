@@ -1,11 +1,11 @@
 <template>
   <el-container style="height: 100%;">
     <el-aside style="width: auto;">
-      <el-menu 
-        :router="true" 
-        class="el-menu-vertical-demo" 
-        :collapse-transition="true" 
-        default-active="1" 
+      <el-menu
+        :router="true"
+        class="el-menu-vertical-demo"
+        :collapse-transition="true"
+        :default-active="$route.path"
         :collapse="isCollapse">
         <el-submenu index="1">
           <template slot="title">
@@ -49,17 +49,17 @@
           </el-col>
         </el-row>
       </el-header>
-      <el-main>
-        <router-view></router-view>
-      </el-main>
+      <app-main />
       <el-footer style="background: none;">Footer</el-footer>
     </el-container>
   </el-container>
 </template>
 <script>
-var echarts = require('echarts/lib/echarts');
+import AppMain from './components/AppMain';
 export default {
-  name: 'index',
+  components: {
+    AppMain
+  },
   data() {
     return {
       isCollapse: false
@@ -73,6 +73,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   width: 200px;
 }
@@ -99,13 +100,11 @@ export default {
 
 .el-main {
   color: #333;
-  text-align: center;
   line-height: 160px;
 }
 .top-wrap i{
   font-size: 20px;
   color: #fff;
-  // line-height: 60px;
   &:hover{
     cursor: pointer;
     transition: all .5s;

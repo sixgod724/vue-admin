@@ -1,31 +1,8 @@
-<!-- <template>
-  <div>
-    这个商品的ID是{{datailsId}}
-    <router-link :to="datailsId + '/info'">跳转</router-link>
-    <div class="indexs"><div id="monthorder" style="width:100%;height:300px"></div></div>
-    <router-view></router-view>
-  </div>
-</template>
-
-<script>
-  export default {
-    data() {
-      return {
-        datailsId: '',
-      }
-    },
-    mounted() {
-      this.datailsId = this.$route.params.id
-    }
-  }
-</script>
-
-<style scoped>
-
-</style>
- -->
 <template>
-  <div class="indexs"><div id="monthorder" style="width:100%;height:300px"></div></div>
+  <div class="indexs">
+    <div>111</div>
+    <div id="monthorder" style="width:100%;height:300px"></div>
+  </div>
 </template>
 <script>
 var echarts = require('echarts/lib/echarts');
@@ -35,14 +12,21 @@ export default {
     return {};
   },
   created() {
-    this.$nextTick(function() {
-      this.montheahcrt();
-    });
+    setTimeout(() => {
+      this.$nextTick(function() {
+        this.montheahcrt();
+      });
+    },100)
+  },
+  mounted() {
+
   },
   methods: {
     montheahcrt() {
-      var that = this;
       var myechart = echarts.init(document.getElementById('monthorder'));
+      window.onresize = () => {
+        myechart.resize();
+      }
       myechart.setOption({
         title: {
           text: '世界人口总量',
