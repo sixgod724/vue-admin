@@ -1,5 +1,6 @@
 <template>
   <el-main class="app-main">
+    <breadcrumb />
     <transition name="slide-fade">
       <router-view class="page-component-wrap" />
     </transition>
@@ -7,9 +8,14 @@
 </template>
 
 <script>
+import breadcrumb from '@/components/Breadcrumb/index'
 export default {
+  components: {
+    breadcrumb
+  },
   data() {
     return {
+      
     };
   },
 };

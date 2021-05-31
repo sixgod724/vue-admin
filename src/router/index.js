@@ -12,9 +12,18 @@ const router = new Router({
       },
     },
     {
+      path: '/dashboard',
+      name: 'Dashboard',
+      meta: {
+        title: 'Dashboard'
+      },
+      component: () => import('../views/dashboard/index.vue')
+    },
+    {
       path: '/index',
       meta: {
-        layout: 'default'
+        layout: 'default',
+        title: '首页导航'
       },
       component: () => import('../views/index.vue')
     },
@@ -28,13 +37,10 @@ const router = new Router({
     },
     {
       path: '/details/:id',
+      meta: {
+        title: '导航'
+      },
       component: () => import('../views/goods/details.vue'),
-      children: [{
-        // 嵌套路由 path 不加 '/'
-        path: 'info',
-        name: 'info',
-        component: () => import('../views/goods/info.vue')
-      }]
     },
     {
       path: '/404',
