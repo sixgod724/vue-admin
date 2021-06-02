@@ -1,12 +1,7 @@
 <template>
   <el-container style="height: 100%;">
     <el-aside style="width: auto;">
-      <el-menu
-        :router="true"
-        class="el-menu-vertical-demo"
-        :collapse-transition="true"
-        :default-active="$route.path"
-        :collapse="$store.state.isCollapse">
+      <el-menu :router="true" class="el-menu-vertical-demo" :collapse-transition="true" :default-active="$route.path" :collapse="$store.state.isCollapse">
         <el-menu-item index="/dashboard">
           <i class="el-icon-s-home"></i>
           <span slot="title">主页</span>
@@ -16,16 +11,16 @@
             <i class="el-icon-time"></i>
             <span slot="title">项目管理</span>
           </template>
-          <el-menu-item index="/details/1">
+          <el-menu-item index="/manage/details/1">
             <template slot="title">
               <i class="el-icon-right"></i>
               <span slot="title">首页</span>
             </template>
           </el-menu-item>
-          <el-menu-item index="/index">
+          <el-menu-item index="/manage/user">
             <template slot="title">
               <i class="el-icon-right"></i>
-              <span slot="title">首页2</span>
+              <span slot="title">关于作者</span>
             </template>
           </el-menu-item>
         </el-submenu>
@@ -44,7 +39,7 @@
 </template>
 <script>
 import AppMain from './components/AppMain';
-import AppHead from './components/APPHead'
+import AppHead from './components/APPHead';
 export default {
   components: {
     AppMain,
@@ -52,16 +47,13 @@ export default {
   },
   data() {
     return {
-      isCollapse: false,
+      isCollapse: false
     };
   },
-  methods: {
-
-  }
+  methods: {}
 };
 </script>
 <style lang="scss" scoped>
-
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   width: 200px;
 }
@@ -81,20 +73,21 @@ export default {
 
 .el-main {
   color: #333;
-  line-height: 160px;
 }
-/deep/ .el-menu-item,/deep/ .el-submenu__title{
+/deep/ .el-menu-item,
+/deep/ .el-submenu__title {
   height: 42px;
   line-height: 42px;
 }
- /deep/ .el-submenu__title{
-   &:hover{
-     background-color:transparent;
-   }
- }
-/deep/.el-menu-item, /deep/ .el-menu-item{
-  &:hover{
-    background-color:transparent;
+/deep/ .el-submenu__title {
+  &:hover {
+    background-color: transparent;
+  }
+}
+/deep/.el-menu-item,
+/deep/ .el-menu-item {
+  &:hover {
+    background-color: transparent;
   }
 }
 </style>

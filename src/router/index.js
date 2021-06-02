@@ -1,46 +1,50 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
 Vue.use(Router)
+
+/* Layout */
+import Layout from '@/layout/default'
+
+import componentsRouter from './modules/comoponents'
 
 const router = new Router({
   mode: 'history',
   routes: [{
       path: '/',
-      redirect: '/login',
-      meta: {
-        layout: 'login'
-      },
+      component: Layout,
+      redirect: '/dashboard',
+      children:[{
+        path: 'dashboard',
+        component: () => import('@/views/dashboard/index')
+      }]
     },
     {
-      path: '/dashboard',
-      name: 'Dashboard',
-      meta: {
-        title: 'Dashboard'
+      path: '/manage',
+      component: Layout,
+      redirect: 'noRedirect',
+      meta:{
+        title: '项目管理'
       },
-      component: () => import('../views/dashboard/index.vue')
+      children:[{
+        path: 'user',
+        meta: {
+          title: '关于作者'
+        },
+        component: () => import('@/views/manage/index')
+      },{
+        path: 'details/:id',
+        meta: {
+          title: '详情'
+        },
+        component: () => import('@/views/manage/details')
+      }]
     },
-    {
-      path: '/index',
-      meta: {
-        layout: 'default',
-        title: '首页导航'
-      },
-      component: () => import('../views/index.vue')
-    },
+    componentsRouter,
     {
       path: '/login',
       name: 'Login',
-      meta: {
-        layout: 'login'
-      },
       component: () => import('../views/login.vue')
-    },
-    {
-      path: '/details/:id',
-      meta: {
-        title: '导航'
-      },
-      component: () => import('../views/goods/details.vue'),
     },
     {
       path: '/404',

@@ -1,12 +1,12 @@
 <template>
-  <div>
-ppp
+  <div> 
+    this is manage index view
   </div>
 </template>
 
 <script>
   export default {
-
+    
   }
 </script>
 

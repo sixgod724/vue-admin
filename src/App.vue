@@ -1,8 +1,9 @@
 <template>
   <div id="app">
-    <component :is="layout">
+    <router-view />
+    <!-- <component :is="layout">
       <router-view />
-    </component>
+    </component> -->
   </div>
 </template>
 
