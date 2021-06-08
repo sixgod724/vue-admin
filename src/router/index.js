@@ -38,6 +38,12 @@ const router = new Router({
           title: '详情'
         },
         component: () => import('@/views/manage/details')
+      },{
+        path: 'meeting',
+        meta: {
+          title: '会议系统'
+        },
+        component: () => import('@/views/meeting')
       }]
     },
     componentsRouter,
