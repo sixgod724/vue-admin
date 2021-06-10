@@ -1,4 +1,3 @@
-
 import Layout from '@/layout/default'
 
 const componentsRouter = {
@@ -9,11 +8,7 @@ const componentsRouter = {
     title: '组件',
     icon: 'el-icon-menu'
   },
-  // component: () => import('@/views/component/user'),
   children: [{
-    path: '',
-    component: () => import('@/views/component/user'),
-  }, {
     path: 'user',
     name: 'UserDemo',
     component: () => import('@/views/component/user'),

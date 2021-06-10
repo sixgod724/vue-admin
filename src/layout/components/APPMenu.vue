@@ -1,5 +1,11 @@
 <template>
-  <el-menu :router="true" class="el-menu-vertical-demo" :collapse-transition="true" :default-active="$route.path" :collapse="$store.state.isCollapse">
+  <el-menu
+    :router="true"
+    class="el-menu-vertical-demo"
+    :collapse-transition="true"
+    :default-active="$route.path"
+    :collapse="$store.state.isCollapse"
+  >
     <el-menu-item index="/dashboard">
       <i class="el-icon-s-home"></i>
       <span slot="title">主页</span>
@@ -36,13 +42,14 @@
 </template>
 
 <script>
+// import router from '@/store/modules/permission';
 export default {
   data() {
     return {
-      isCollapse: false
     };
   },
-  created() {
+  mounted() {
+    // console.log(router);
   }
 };
 </script>

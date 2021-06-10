@@ -11,10 +11,10 @@ import LoginLayout from './layout/login'
 import DefaultLayout from './layout/default.vue'
 import locale from 'element-ui/lib/locale/lang/en'
 import i18n from './i18n/i18n'
-import store from './vuex/store'
+import store from './store/index'
 
-Vue.component('login-layout',LoginLayout)
-Vue.component('default-layout',DefaultLayout)
+// Vue.component('login-layout',LoginLayout)
+// Vue.component('default-layout',DefaultLayout)
 // Vue.prototype.$echarts = echarts
 
 Vue.use(animated)

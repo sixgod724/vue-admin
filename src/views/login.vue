@@ -51,7 +51,7 @@ export default {
         if (valid) {
           localStorage.setItem('user', JSON.stringify(this.form.user));
           this.$router.push({
-            path: '/index'
+            path: '/dashboard'
           });
         } else {
           return false;
