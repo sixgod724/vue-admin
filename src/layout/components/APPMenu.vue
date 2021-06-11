@@ -42,14 +42,13 @@
 </template>
 
 <script>
-// import router from '@/store/modules/permission';
+import constantRoutes from '@/store/modules/permission';
 export default {
   data() {
     return {
     };
   },
   mounted() {
-    // console.log(router);
   }
 };
 </script>

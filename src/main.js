@@ -12,10 +12,10 @@ import DefaultLayout from './layout/default.vue'
 import locale from 'element-ui/lib/locale/lang/en'
 import i18n from './i18n/i18n'
 import store from './store/index'
+import axios from 'axios'
+require('../mock')
 
-// Vue.component('login-layout',LoginLayout)
-// Vue.component('default-layout',DefaultLayout)
-// Vue.prototype.$echarts = echarts
+Vue.prototype.$http = axios
 
 Vue.use(animated)
 Vue.use(ElementUI,{
