@@ -53,4 +53,15 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+/deep/.el-menu-vertical-demo:not(.el-menu--collapse) {
+  width: 200px;
+  .el-menu-item,
+  .el-submenu__title{
+    transition: all .25s ease;
+    &:hover{
+      margin-left: 5px;
+    }
+  }
+}
+</style>

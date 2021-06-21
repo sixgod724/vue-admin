@@ -1,17 +1,40 @@
-body{
+@import './module.scss';
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+body {
   background: #f8f8f8;
 }
-.page-component-wrap{
-  padding: 32px;
-}
-#app,
-html {
+html,
+body {
+  font-size: 14px;
   height: 100%;
+  p{
+    line-height: 1.5rem;
+  }
 }
 body {
-  height: 100%;
-  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+  font-weight: 400;
+  color: #6e6b7b;
+  line-height: 1;
+  font-family: 'Montserrat', 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
 }
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #5e5873;
+}
+
 *,
 *:before,
 *:after {
@@ -101,8 +124,7 @@ video {
   margin: 0;
   padding: 0;
   border: 0;
-  font-size: 100%;
-  font: inherit;
+  font-size: 1rem;
   vertical-align: baseline;
 }
 
@@ -121,10 +143,6 @@ section {
   display: block;
 }
 
-body {
-  line-height: 1;
-}
-
 ol,
 ul {
   list-style: none;
@@ -139,11 +157,20 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: "";
+  content: '';
   content: none;
 }
 
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+a {
+  color: #7367f0;
+  text-decoration: none;
+}
+.h3,
+ h3 {
+    font-size: 1.5rem;
 }

@@ -29,10 +29,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.el-menu-vertical-demo:not(.el-menu--collapse) {
-  width: 200px;
-}
-
 .el-footer {
   text-align: center;
   line-height: 60px;

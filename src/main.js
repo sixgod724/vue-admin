@@ -6,16 +6,14 @@ import router from './router'
 import echarts from 'echarts'
 import animated from 'animate.css'
 import Layout from './layout/default'
-import './scss/reset.css'
-import LoginLayout from './layout/login'
-import DefaultLayout from './layout/default.vue'
+import './scss/reset.scss'
+// import LoginLayout from './layout/login'
+// import DefaultLayout from './layout/default.vue'
 import locale from 'element-ui/lib/locale/lang/en'
 import i18n from './i18n/i18n'
-import store from './store/index'
+import store from './store'
 import axios from 'axios'
-require('../mock')
-
-Vue.prototype.$http = axios
+import '../mock'
 
 Vue.use(animated)
 Vue.use(ElementUI,{

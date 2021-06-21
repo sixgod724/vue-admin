@@ -1,0 +1,36 @@
+.page-component-wrap{
+  padding: 32px;
+}
+.card{
+  flex: 1 1 auto;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  word-wrap: break-word;
+  position: relative;
+  background-color: #fff;
+  border-radius: .428rem;
+  height: 100%;
+  box-shadow: 0 4px 24px #22292f1a;
+  .card-header{
+    border-bottom: none;
+    padding: 1.5rem;
+    background-color: transparent;
+  }
+  .card-header{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .card-body {
+    padding: 1.5rem;
+  }
+}
+.font-small-2{
+  font-size: .8rem;
+}
+.font-small-3{
+  font-size: .9rem;
+}

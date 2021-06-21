@@ -7,3 +7,11 @@ export function getList(qurer){
     params: qurer
   })
 }
+
+export function postList(qurer){
+  return request({
+    url: 'test/user',
+    method: 'get',
+    params: qurer
+  })
+}
