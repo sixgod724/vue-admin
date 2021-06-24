@@ -1,14 +1,19 @@
 <template>
   <el-header class="top-wrap">
-    <el-row type="flex">
-      <el-col :span="5"><i @click="menuShow" :style="{ transform: $store.state.isCollapse ? 'rotate(0)' : 'rotate(180deg)' }" class="el-icon-s-unfold"></i></el-col>
-      <el-col :span="19">
+    <div class="i-box"><i @click="menuShow" :style="{ transform: $store.state.isCollapse ? 'rotate(0)' : 'rotate(180deg)' }" class="el-icon-s-unfold"></i></div>
+    <ul class="nav-bar-nav">
+      <li><span @click="we">切换</span></li>
+      <li><span>3</span></li>
+    </ul>
+    <!-- <el-row type="flex">
+      <el-col><i @click="menuShow" :style="{ transform: $store.state.isCollapse ? 'rotate(0)' : 'rotate(180deg)' }" class="el-icon-s-unfold"></i></el-col>
+      <el-col>
         <el-row type="flex" justify="end">
-          <el-col :span="2"><span @click="we">切换</span></el-col>
-          <el-col :span="2">3</el-col>
+          <el-col :span="12"><span @click="we">切换</span></el-col>
+          <el-col :span="12">3</el-col>
         </el-row>
       </el-col>
-    </el-row>
+    </el-row> -->
   </el-header>
 </template>
 
@@ -25,12 +30,12 @@ export default {
       let i18_state = this.$i18n.locale;
       if (i18_state === 'en') {
         this.$i18n.locale = 'cn';
-        localStorage.setItem('lang','cn');
+        localStorage.setItem('lang', 'cn');
       } else {
         this.$i18n.locale = 'en';
-        localStorage.setItem('lang','en');
+        localStorage.setItem('lang', 'en');
       }
-    },
+    }
   }
 };
 </script>
@@ -43,12 +48,23 @@ export default {
   z-index: 1000;
   box-shadow: 0 0 20px #00000026;
 }
-.top-wrap i {
-  font-size: 20px;
-  color: #6e6b7b;
-  &:hover {
-    cursor: pointer;
-    transition: all 0.5s;
+.top-wrap {
+  display: flex;
+  // align-items: center;
+  .i-box {
+    flex-grow: 1;
+  }
+  i {
+    font-size: 20px;
+    color: #6e6b7b;
+    flex-grow: 1;
+    &:hover {
+      cursor: pointer;
+      transition: all 0.5s;
+    }
+  }
+  .nav-bar-nav {
+    display: flex;
   }
 }
 </style>

@@ -9,6 +9,26 @@ export default {
     id:{
       type: String
     },
+    title:{
+      type: String
+    },
+    xaixs: {
+      type: Array
+    },
+    series: {
+      type: Array
+    },
+    callback:{
+      type: Function
+    },
+  },
+  watch: {
+    series:{
+      handler:function(){
+        this.Chart = pie(...Object.values(this.$props));
+      },
+      deep:true
+    }
   },
   data() {
     return {
@@ -16,8 +36,7 @@ export default {
     }
   },
   mounted() {
-    
-    this.Chart = pie(this.id);
+    this.Chart = pie(...Object.values(this.$props));
   }
 }
 </script>
@@ -25,7 +44,5 @@ export default {
 <style scoped>
 .echart-box {
   width: 100%;
-  height: 300px;
-  background-color: #F0C78A;
 }
 </style>

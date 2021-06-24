@@ -20,46 +20,7 @@
           </div>
           <div class="card-body statistics-body">
             <el-row>
-              <el-col :span="6">
-                <div class="media">
-                  <div class="media-aside mr-2">
-                    <span class="badge-light-primary rounded-circle b-avatar" style="width: 48px;height: 48px;">
-                      <span class="b-avatar-custom"><i class="el-icon-position"></i></span>
-                    </span>
-                  </div>
-                  <div class="media-body">
-                    <h4 class="font-weight-bolder mb-0">230k</h4>
-                    <p class="card-text font-small-3 mb-0">Sales</p>
-                  </div>
-                </div>
-              </el-col>
-              <el-col :span="6">
-                <div class="media">
-                  <div class="media-aside mr-2">
-                    <span class="badge-light-primary rounded-circle b-avatar" style="width: 48px;height: 48px;">
-                      <span class="b-avatar-custom"><i class="el-icon-position"></i></span>
-                    </span>
-                  </div>
-                  <div class="media-body">
-                    <h4 class="font-weight-bolder mb-0">230k</h4>
-                    <p class="card-text font-small-3 mb-0">Sales</p>
-                  </div>
-                </div>
-              </el-col>
-              <el-col :span="6">
-                <div class="media">
-                  <div class="media-aside mr-2">
-                    <span class="badge-light-primary rounded-circle b-avatar" style="width: 48px;height: 48px;">
-                      <span class="b-avatar-custom"><i class="el-icon-position"></i></span>
-                    </span>
-                  </div>
-                  <div class="media-body">
-                    <h4 class="font-weight-bolder mb-0">230k</h4>
-                    <p class="card-text font-small-3 mb-0">Sales</p>
-                  </div>
-                </div>
-              </el-col>
-              <el-col :span="6">
+              <el-col v-for="item in 4" :lg="6" :md="12">
                 <div class="media">
                   <div class="media-aside mr-2">
                     <span class="badge-light-primary rounded-circle b-avatar" style="width: 48px;height: 48px;">
@@ -77,10 +38,48 @@
         </div>
       </el-col>
     </el-row>
-    <p @click="we()">1112</p>
-    <div>
-      <pie v-if="type" id="demo" />
-    </div>
+    <el-row type="flex" :gutter="14">
+      <el-col :span="8">
+        <el-row :gutter="14" style="width: 100%;">
+          <el-col :span="12">
+            <div class="card">
+              <div class="card-body">
+                <h6>Orders</h6>
+                <h2>2,76k</h2>
+                <pie
+                  style="min-height: 85px;"
+                  id="demo"
+                  :callback="dataList"
+                />
+              </div>
+            </div>
+          </el-col>
+          <el-col :span="12">
+            <div class="card">
+              <div class="card-body">
+                <h6>Profit</h6>
+                <h2>6,27k</h2>
+                <pie
+                  style="min-height: 85px;"
+                  id="demo1"
+                  :callback="dataList"
+                />
+              </div>
+            </div>
+          </el-col>
+        </el-row>
+      </el-col>
+      <el-col :span="14">
+        <pie
+          style="min-height: 85px;"
+          id="demo2"
+          :xaixs="order.xaixs"
+          :series="order.series"
+          :callback="dataList"
+        />
+      </el-col>
+    </el-row>
+    <p>---{{data_list}}</p>
   </div>
 </template>
 
@@ -93,39 +92,55 @@ export default {
   },
   data() {
     return {
-      data: '',
-      type:true,
+      order:{
+        xaixs:[],
+        series:[]
+      },
+      item: [],
       data_list: [],
-      oneCircleEchart: [{
-        name: "Web 秀",
-        value: 10000,
-        },{
-          name: "Macys",
-          value: 6181,
-        }],
     };
   },
   mounted() {
     this.init();
   },
   methods: {
-    we(){
-      console.log(this.type);
-      this.type = !this.type;
-    },
     init() {
       this.getList();
       this.show();
     },
+    dataList() {
+      console.log(1);
+    },
     async getList() {
-      let data = await getList();
+      // let data = await getList();
       // this.data = data.data.disclaimer;
     },
     show() {
       postList()
         .then(data => {
-          this.data_list = data.data;
-          // console.log(data);
+          this.data_list = data;
+          let xaxis = [];
+          let datas = [];
+          for (let item of data) {
+            xaxis.push(item.type);
+            datas.push(item.cjl)
+          }
+          this.order.xaixs = xaxis;
+          this.order.series = [{
+            name: '销量',
+            type: 'bar',
+            // zlevel: 1,
+            data:datas,
+            // itemStyle: {
+            //   barBorderRadius: 50
+            // },
+            // barGap: '-100%',
+            // barCategoryGap: '74%',
+          },{
+            name: '曲线',
+            type: 'line',
+            data:[54,12,37,27,79]
+          }];
         })
         .catch(err => console.log(err));
     }
@@ -135,9 +150,10 @@ export default {
 
 <style lang="scss" scoped>
 .card {
-  .card-title {
-    font-weight: 500;
-    font-size: 1.285rem;
+  .card-header{
+    .card-title {
+      margin-bottom: 0;
+    }
   }
 }
 .congratulation-medal {

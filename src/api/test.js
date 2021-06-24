@@ -10,7 +10,8 @@ export function getList(qurer){
 
 export function postList(qurer){
   return request({
-    url: 'test/user',
+    // url: 'test/user',
+    url: '/user',
     method: 'get',
     params: qurer
   })

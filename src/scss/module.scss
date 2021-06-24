@@ -1,8 +1,11 @@
-.page-component-wrap{
+.page-component-wrap {
   padding: 32px;
 }
-.card{
+.card {
   flex: 1 1 auto;
+}
+.card {
+  margin-bottom: 2rem;
 }
 .card {
   display: flex;
@@ -10,15 +13,14 @@
   word-wrap: break-word;
   position: relative;
   background-color: #fff;
-  border-radius: .428rem;
-  height: 100%;
+  border-radius: 0.428rem;
   box-shadow: 0 4px 24px #22292f1a;
-  .card-header{
+  .card-header {
     border-bottom: none;
     padding: 1.5rem;
     background-color: transparent;
   }
-  .card-header{
+  .card-header {
     position: relative;
     display: flex;
     align-items: center;
@@ -28,9 +30,19 @@
     padding: 1.5rem;
   }
 }
-.font-small-2{
-  font-size: .8rem;
+.font-small-2 {
+  font-size: 0.8rem;
 }
-.font-small-3{
-  font-size: .9rem;
+.font-small-3 {
+  font-size: 0.9rem;
+}
+
+.el-row{
+  >[class*=col]{
+    display: flex;
+  }
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{
+margin-bottom: .5rem;
+margin-top: 0;
 }
