@@ -18,6 +18,9 @@ export default {
     series: {
       type: Array
     },
+    color:{
+      type: Array
+    },
     callback:{
       type: Function
     },
@@ -36,8 +39,8 @@ export default {
     }
   },
   mounted() {
-    this.Chart = pie(...Object.values(this.$props));
-  }
+    this.Chart = new pie(...Object.values(this.$props));
+  },
 }
 </script>
 

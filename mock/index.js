@@ -19,3 +19,14 @@ Mock.mock('/user', () => {
   }
   return datalist
 })
+
+Mock.mock('/profit','get',() => {
+  let data = [];
+  for(let i=0; i<6; i++) {
+    const o = {
+      lr: Random.natural(1,100),
+    }
+    data.push(o);
+  }
+  return data;
+})

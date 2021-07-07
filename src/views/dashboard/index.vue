@@ -43,12 +43,15 @@
         <el-row :gutter="14" style="width: 100%;">
           <el-col :span="12">
             <div class="card">
-              <div class="card-body">
+              <div class="card-body pb-50">
                 <h6>Orders</h6>
                 <h2>2,76k</h2>
                 <pie
                   style="min-height: 85px;"
                   id="demo"
+                  :xaixs="order.xaixs"
+                  :series="order.series"
+                  :color="['#fdab5d']"
                   :callback="dataList"
                 />
               </div>
@@ -56,27 +59,16 @@
           </el-col>
           <el-col :span="12">
             <div class="card">
-              <div class="card-body">
+              <div class="card-body pb-50">
                 <h6>Profit</h6>
                 <h2>6,27k</h2>
-                <pie
-                  style="min-height: 85px;"
-                  id="demo1"
-                  :callback="dataList"
-                />
               </div>
             </div>
           </el-col>
         </el-row>
       </el-col>
       <el-col :span="14">
-        <pie
-          style="min-height: 85px;"
-          id="demo2"
-          :xaixs="order.xaixs"
-          :series="order.series"
-          :callback="dataList"
-        />
+
       </el-col>
     </el-row>
     <p>---{{data_list}}</p>
@@ -84,7 +76,7 @@
 </template>
 
 <script>
-import { getList, postList } from '@/api/test.js';
+import {postList, getProfit} from '@/api/test.js';
 import pie from '@/components/echarts/type/pie';
 export default {
   components: {
@@ -92,11 +84,14 @@ export default {
   },
   data() {
     return {
+      type:true,
       order:{
         xaixs:[],
         series:[]
       },
-      item: [],
+      profit_list:{
+        series:[]
+      },
       data_list: [],
     };
   },
@@ -105,15 +100,11 @@ export default {
   },
   methods: {
     init() {
-      this.getList();
       this.show();
+      this.profit();
     },
     dataList() {
       console.log(1);
-    },
-    async getList() {
-      // let data = await getList();
-      // this.data = data.data.disclaimer;
     },
     show() {
       postList()
@@ -125,24 +116,42 @@ export default {
             xaxis.push(item.type);
             datas.push(item.cjl)
           }
+          let maxArr = (new Array(datas.length)).fill(100);
           this.order.xaixs = xaxis;
           this.order.series = [{
             name: '销量',
             type: 'bar',
-            // zlevel: 1,
+            zlevel: 1,
             data:datas,
-            // itemStyle: {
-            //   barBorderRadius: 50
-            // },
-            // barGap: '-100%',
-            // barCategoryGap: '74%',
+            itemStyle: {
+              barBorderRadius: 50
+            },
+            barGap: '-100%',
           },{
-            name: '曲线',
-            type: 'line',
-            data:[54,12,37,27,79]
+            data:maxArr,
+            type: 'bar',
+            itemStyle: {
+              normal: {
+                color: 'rgba(243,243,243,0.55)',
+                barBorderRadius: 50,
+                legend: {
+                  show: false
+                },
+              },
+            },
           }];
         })
         .catch(err => console.log(err));
+    },
+    // profit(){
+    //   getProfit()
+    //     .then(data => {
+    //       console.log(data);
+    //     })
+    // },
+    async profit(){
+      let res = await getProfit();
+      console.log(res);
     }
   }
 };
@@ -168,8 +177,11 @@ h5 {
 .card-text {
   margin-bottom: 1rem;
 }
-.pt-50 {
+.pt-50{
   padding-top: 0.5rem;
+}
+.pb-50{
+  padding-bottom: .5rem;
 }
 .mb-75 {
   margin-bottom: 0.75rem;
